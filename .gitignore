@@ -1,0 +1,44 @@
+# Ignore build outputs
+bin/
+obj/
+out/
+
+# Ignore user-specific files
+*.user
+*.vs
+*.suo
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore dependency directories
+node_modules/
+packages/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore database files
+*.mdf
+*.ldf
+
+# Ignore environmental files
+.env
+.env.local
+.env.*.local
+
+# Ignore Docker files
+docker-compose.override.yml
+.docker/
+
+# Ignore Kubernetes local config
+k8s-config.local.yml
+
+# MacOS files
+.DS_Store
+
+# Windows files
+Thumbs.db

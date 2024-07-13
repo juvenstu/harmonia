@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: commandsservice
+spec:
+  selector:
+    matchLabels:
+      app: commandsservice
+  template:
+    metadata:
+      labels:
+        app: commandsservice
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: commandsservice
+          image: juvenstu/commandsservice
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080

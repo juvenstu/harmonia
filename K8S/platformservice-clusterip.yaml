@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: platformservice-clusterip
+spec:
+  selector:
+    app: platformservice
+  ports:
+    - port: 8080
+      targetPort: 8080
