@@ -19,12 +19,4 @@ public class PlatformsController(ICommandRepo repository, IMapper mapper) : Cont
         var platforms = _repository.GetAllPlatforms();
         return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platforms));
     }
-
-    [HttpPost]
-    [ProducesResponseType<string>(StatusCodes.Status200OK)]
-    public ActionResult TestInBoundConnection()
-    {
-        Console.WriteLine("info: Inbound POST # Command Service");
-        return Ok("Inbound test from platforms controller is ok!");
-    }
 }
