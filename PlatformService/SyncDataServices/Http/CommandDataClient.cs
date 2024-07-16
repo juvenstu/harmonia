@@ -17,13 +17,7 @@ public class CommandDataClient(HttpClient httpClient, IConfiguration configurati
 
         var response = await _httpClient.PostAsync(_configuration["CommandsService"], httpContent);
 
-        if (response.IsSuccessStatusCode)
-        {
-            Console.WriteLine("info: Sync POST to command service successful!");
-        }
-        else
-        {
-            Console.WriteLine("info: Sync POST to command service failed!");
-        }
+        if (response.IsSuccessStatusCode) Console.WriteLine("info: Sync POST to commands service successful!");
+        else Console.WriteLine("info: Sync POST to commands service failed!");
     }
 }
