@@ -27,11 +27,14 @@ public class MessageBusSubscriber : BackgroundService
             HostName = _configuration["RabbitMQHost"],
             Port = int.TryParse(_configuration["RabbitMQPort"], out int port) ? port : 5672
         };
+
         _connection = factory.CreateConnection();
         _channel = _connection.CreateModel();
         _channel.ExchangeDeclare(exchange: "trigger", type: ExchangeType.Fanout);
+
         _queueName = _channel.QueueDeclare().QueueName;
         _channel.QueueBind(queue: _queueName, exchange: "trigger", routingKey: "");
+
         _connection.ConnectionShutdown += RabbitMQConnectionShutdown;
 
         Console.WriteLine("info: Listening on the message bus...");
@@ -39,7 +42,7 @@ public class MessageBusSubscriber : BackgroundService
 
     private void RabbitMQConnectionShutdown(object? sender, ShutdownEventArgs e)
     {
-        Console.WriteLine("info: Connection shutdown");
+        Console.WriteLine("info: RabbitMQ Connection shutdown");
     }
 
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -49,7 +52,7 @@ public class MessageBusSubscriber : BackgroundService
         var consumer = new EventingBasicConsumer(_channel);
         consumer.Received += (ch, ea) =>
         {
-            Console.WriteLine("Event Received!");
+            Console.WriteLine("info: Event Received!");
             var body = ea.Body.ToArray();
             var notificationMessage = Encoding.UTF8.GetString(body);
 
@@ -66,7 +69,7 @@ public class MessageBusSubscriber : BackgroundService
         if (_channel?.IsOpen == true)
         {
             _channel.Close();
+            _connection?.Close();
         }
-        _connection?.Close();
     }
 }

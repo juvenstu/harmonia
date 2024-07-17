@@ -17,12 +17,13 @@ public class EventProcessor(IServiceScopeFactory serviceScopeFactory, IMapper ma
         var eventType = DetermineEvent(message);
         if (eventType == EventType.PlatformPublished)
         {
-            // To DO
+            AddPlatform(message);
         }
     }
 
     private static EventType DetermineEvent(string notificationMessage)
     {
+        Console.WriteLine("info: Determining the event...");
         var eventType = JsonSerializer.Deserialize<GenericEventDto>(notificationMessage);
         switch (eventType?.Event)
         {
@@ -49,6 +50,7 @@ public class EventProcessor(IServiceScopeFactory serviceScopeFactory, IMapper ma
             {
                 repo.CreatePlatform(platform);
                 repo.SaveChanges();
+                Console.WriteLine("info: Platform added.");
             }
         }
         catch (Exception e)

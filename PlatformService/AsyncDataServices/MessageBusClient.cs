@@ -84,8 +84,11 @@ namespace PlatformService.AsyncDataServices
 
             if (disposing)
             {
-                if (_channel?.IsOpen == true) _channel.Close();
-                _connection?.Close();
+                if (_channel?.IsOpen == true)
+                {
+                    _channel.Close();
+                    _connection?.Close();
+                }
             }
 
             _disposed = true;
