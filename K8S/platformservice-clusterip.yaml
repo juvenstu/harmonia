@@ -6,5 +6,9 @@ spec:
   selector:
     app: platformservice
   ports:
-    - port: 8080
+    - name: ps-http
+      port: 8080
       targetPort: 8080
+    - name: ps-grpc
+      port: 666
+      targetPort: 666
