@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PlatformService.AsyncDataServices;
 using PlatformService.Data;
+using PlatformService.SyncDataServices.Grpc;
 using PlatformService.SyncDataServices.Http;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,7 @@ builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddGrpc();
 
 ConsoleColor originalColor = Console.ForegroundColor;
 Console.ForegroundColor = ConsoleColor.Blue;
@@ -49,6 +51,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGrpcService<GrpcPlatformService>();
+app.MapGet("/Protos/platform.proto", async (context) =>
+{
+    var text = await File.ReadAllTextAsync("/Protos/platform.proto");
+    await context.Response.WriteAsync(text);
+});
 
 PrepDb.PrepPopulation(app, app.Environment.IsProduction());
 
