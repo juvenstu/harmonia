@@ -1,6 +1,6 @@
 # Harmonia
 
-Welcome to the Harmonia project! This repository contains the source code for the Harmonia microservices application. Harmonia is a demo project to showcase how to build and deploy microservices using ASP.NET Core, RabbitMQ, gRPC, MS SQL, and Kubernetes.
+Welcome to the Harmonia project! This repository contains the source code for the Harmonia microservices application. Harmonia is a demo project that showcases how to build and deploy microservices using ASP.NET Core, RabbitMQ, gRPC, Microsoft SQL Server, Docker, and Kubernetes.
 
 ## Overview
 
@@ -8,23 +8,23 @@ Harmonia is a microservices-based application designed to demonstrate the integr
 
 ## Technologies Used
 
-- **ASP.NET Core**: For building the web APIs.
+- **ASP.NET Core**: This is for building the web APIs.
 
 - **Entity Framework Core**: For database interactions.
+
+- **Microsoft SQL Server**: For relational database management.
 
 - **RabbitMQ**: For asynchronous messaging between services.
 
 - **gRPC**: For high-performance, language-agnostic remote procedure calls.
 
-- **Kubernetes**: For container orchestration and management.
-
 - **Docker**: For containerizing the services.
 
-- **MS SQL**: For relational database management.
+- **Kubernetes**: For container orchestration and management.
 
 ## Documentation
 
-For detailed information on installation, architecture, services, API documentation, and contributing, please refer to the [Docs](Docs) folder:
+For detailed information on installation, architecture, services, and API documentation, please refer to the [docs](Docs) folder:
 
 - [Installation](Docs/installation.md)
 - [Architecture](Docs/architecture.md)

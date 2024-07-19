@@ -15,7 +15,7 @@ The Harmonia project consists of multiple microservices, each responsible for sp
     - Provides RESTful API endpoints for creating, reading, updating, and deleting platforms.
     - Publishes platform data events to RabbitMQ for other services to consume.
 
-2. **CommandService**
+2. **CommandsService**
     - Manages command-related data and operations.
     - Provides RESTful API endpoints for creating, reading, updating, and deleting commands.
     - Consumes platform data events from RabbitMQ to maintain data consistency.
