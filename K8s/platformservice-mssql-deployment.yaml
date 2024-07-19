@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platformservice-mssql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platformservice-mssql
+  template:
+    metadata:
+      labels:
+        app: platformservice-mssql
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: platformservice-mssql
+          image: mcr.microsoft.com/mssql/server:2022-latest
+          resources:
+            requests:
+              memory: "2G"
+              cpu: "2000m"
+            limits:
+              memory: "2G"
+              cpu: "2000m"
+              ephemeral-storage: 1Gi
+          ports:
+            - containerPort: 1433
+          env:
+            - name: MSSQL_PID
+              value: "Express"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-secret
+                  key: mssql-sa-password
+          volumeMounts:
+            - name: mssqldb
+              mountPath: /var/opt/mssql/data
+      volumes:
+        - name: mssqldb
+          persistentVolumeClaim:
+            claimName: mssql-data
