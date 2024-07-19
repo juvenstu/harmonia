@@ -8,11 +8,6 @@ Welcome to the Harmonia project! This repository contains the source code for th
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Technologies Used](#technologies-used)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Running Locally](#running-locally)
-    - [Running on Kubernetes](#running-on-kubernetes)
-  - [Services](#services)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -36,93 +31,18 @@ Harmonia is a microservices-based application designed to demonstrate the integr
 
 - **MS SQL**: For relational database management.
 
-## Getting Started
+## Documentation
 
-Follow these instructions to get a copy of the project up and running on your local machine or on Kubernetes.
+For detailed information on installation, architecture, services, API documentation, and contributing, please refer to the [docs](docs/index.md) folder:
 
-### Prerequisites
-
-- .NET SDK 8.0
-- Docker
-- Kubernetes (Docker Desktop or any other Kubernetes cluster)
-- kubectl
-- RabbitMQ (for local development)
-- MS SQL Server (for local development)
-- Postman
-
-### Running Locally
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/juvenstu/harmonia.git
-   cd harmonia
-   ```
-
-2. Start RabbitMQ locally
-
-    ```bash
-    docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
-    ```
-
-3. Start MS SQL Server locally:
-
-    ```bash
-    docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Your_password123' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
-    ```
-
-4. Update the `appsettings.Development.json` files in each service to point to your local RabbitMQ instances.
-5. Apply any pending database migrations:
-
-    ```bash
-    cd PlatformService
-    dotnet ef database update
-    ```
-
-6. Build and run the services:
-
-   ```bash
-   dotnet run
-   ```
-
-Repeat for `CommandsService` services.
-
-### Running on Kubernetes
-
-1. Build Docker images for each service:
-
-   ```bash
-    docker build -t <username>/platformservice:latest -f .
-    docker build -t <username>/commandsservice:latest -f .
-    ```
-
-2. Push the images to a container registry (e.g., Docker Hub)
-
-    ```bash
-    docker push <username>/platformservice:latest
-    docker push <username>/commandsservice:latest
-    ```
-
-3. Deploy on Kubernetes using `K8s` folder:
-
-    ```bash
-    cd K8s
-    kubectl apply -f .
-    ```
-
-4. Deploy Ingress Nginx Controller
-
-    ```bash
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.1/deploy/static/provider/cloud/deploy.yaml```
-
-## Services
-
-- PlatformService: Manages platform-related data and operations.
-- CommandsService: Handles command-related data and operations.
+- [Installation](docs/installation.md)
+- [Architecture](docs/architecture.md)
+- [Services](docs/services.md)
+- [API Documentation](docs/api/index.md)
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or bug fixes.
+Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or bug fixes. [Learn more](CONTRIBUTING)
 
 ## License
 
