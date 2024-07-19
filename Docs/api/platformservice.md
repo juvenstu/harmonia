@@ -1,4 +1,4 @@
-# PlatformService API
+# Platform Service API
 
 ## Endpoints
 

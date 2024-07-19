@@ -1,4 +1,4 @@
-# CommandsService API
+# Commands Service API
 
 ## Endpoints
 

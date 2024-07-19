@@ -1,4 +1,4 @@
-# Harmonia Services Documentation
+# Harmonia Services
 
 This document provides an in-depth description of the services that make up the Harmonia project. Each service has a specific role and interacts with other services to fulfill the overall functionality of the system.
 
