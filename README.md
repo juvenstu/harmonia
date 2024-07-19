@@ -33,12 +33,12 @@ Harmonia is a microservices-based application designed to demonstrate the integr
 
 ## Documentation
 
-For detailed information on installation, architecture, services, API documentation, and contributing, please refer to the [docs](docs) folder:
+For detailed information on installation, architecture, services, API documentation, and contributing, please refer to the [Docs](Docs) folder:
 
-- [Installation](docs/installation.md)
-- [Architecture](docs/architecture.md)
-- [Services](docs/services.md)
-- [API Documentation](docs/api)
+- [Installation](Docs/installation.md)
+- [Architecture](Docs/architecture.md)
+- [Services](Docs/services.md)
+- [API Documentation](Docs/api)
 
 ## Contributing
 
